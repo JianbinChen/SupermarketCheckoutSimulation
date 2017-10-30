@@ -1,0 +1,550 @@
+class: main.Main
+-----
+fields:
+
+field name  = mainFrame
+declaring class = class main.Main
+type  = class gui.MainFrame
+modifiers = private static
+
+
+field name  = controller
+declaring class = class main.Main
+type  = class main.Controller
+modifiers = private static
+
+
+-----
+constructors:
+
+constructor name   = main.Main
+declaring class = class main.Main
+
+
+-----
+method name  = main
+ param #0 class [Ljava.lang.String;with modifierpublic abstract final
+return type = void
+
+
+method name  = setMainFrame
+-----
+
+
+class: main.Controller
+-----
+fields:
+
+field name  = mainFrame
+declaring class = class main.Controller
+type  = class gui.MainFrame
+modifiers = private
+
+
+field name  = startListener
+declaring class = class main.Controller
+type  = interface java.awt.event.ActionListener
+modifiers = private
+
+
+field name  = lowFluxListener
+declaring class = class main.Controller
+type  = interface java.awt.event.ActionListener
+modifiers = private
+
+
+field name  = standardFluxListener
+declaring class = class main.Controller
+type  = interface java.awt.event.ActionListener
+modifiers = private
+
+
+field name  = highFluxListener
+declaring class = class main.Controller
+type  = interface java.awt.event.ActionListener
+modifiers = private
+
+
+field name  = reportListener
+declaring class = class main.Controller
+type  = interface java.awt.event.ActionListener
+modifiers = private
+
+
+field name  = reflectionListener
+declaring class = class main.Controller
+type  = interface java.awt.event.ActionListener
+modifiers = private
+
+
+-----
+constructors:
+
+constructor name   = main.Controller
+declaring class = class main.Controller
+param #0 class gui.MainFrame
+
+
+-----
+method name  = setMainFrame
+ param #0 class gui.MainFramewith modifierpublic
+return type = void
+
+
+method name  = getMainFrame
+return type = class gui.MainFrame
+
+
+-----
+
+
+class: gui.MainFrame
+-----
+fields:
+
+field name  = minCustomerTimeDifference
+declaring class = class gui.MainFrame
+type  = class javax.swing.JTextField
+modifiers = private
+
+
+field name  = maxCustomerTimeDifference
+declaring class = class gui.MainFrame
+type  = class javax.swing.JTextField
+modifiers = private
+
+
+field name  = minCustomerServiceTime
+declaring class = class gui.MainFrame
+type  = class javax.swing.JTextField
+modifiers = private
+
+
+field name  = maxCustomerServiceTime
+declaring class = class gui.MainFrame
+type  = class javax.swing.JTextField
+modifiers = private
+
+
+field name  = maxQueues
+declaring class = class gui.MainFrame
+type  = class javax.swing.JTextField
+modifiers = private
+
+
+field name  = simulationTime
+declaring class = class gui.MainFrame
+type  = class javax.swing.JTextField
+modifiers = private
+
+
+field name  = start
+declaring class = class gui.MainFrame
+type  = class javax.swing.JButton
+modifiers = private
+
+
+field name  = lowFlux
+declaring class = class gui.MainFrame
+type  = class javax.swing.JButton
+modifiers = private
+
+
+field name  = standardFlux
+declaring class = class gui.MainFrame
+type  = class javax.swing.JButton
+modifiers = private
+
+
+field name  = highFlux
+declaring class = class gui.MainFrame
+type  = class javax.swing.JButton
+modifiers = private
+
+
+field name  = report
+declaring class = class gui.MainFrame
+type  = class javax.swing.JButton
+modifiers = private
+
+
+field name  = reflection
+declaring class = class gui.MainFrame
+type  = class javax.swing.JButton
+modifiers = private
+
+
+-----
+constructors:
+
+constructor name   = gui.MainFrame
+declaring class = class gui.MainFrame
+
+
+-----
+method name  = menu
+return type = void
+
+
+method name  = getMinCustomerTimeDifference
+return type = class javax.swing.JTextField
+
+
+method name  = getStart
+return type = class javax.swing.JButton
+
+
+method name  = getMaxCustomerTimeDifference
+return type = class javax.swing.JTextField
+
+
+method name  = getLowFlux
+return type = class javax.swing.JButton
+
+
+method name  = getMinCustomerServiceTime
+return type = class javax.swing.JTextField
+
+
+method name  = getStandardFlux
+return type = class javax.swing.JButton
+
+
+method name  = getMaxCustomerServiceTime
+return type = class javax.swing.JTextField
+
+
+method name  = getHighFlux
+return type = class javax.swing.JButton
+
+
+method name  = getMaxQueues
+return type = class javax.swing.JTextField
+
+
+method name  = getReport
+return type = class javax.swing.JButton
+
+
+method name  = getSimulationTime
+return type = class javax.swing.JTextField
+
+
+method name  = getReflection
+return type = class javax.swing.JButton
+
+
+method name  = setStart
+-----
+
+
+class: gui.ReportFrame
+-----
+fields:
+
+field name  = textArea
+declaring class = class gui.ReportFrame
+type  = class javax.swing.JTextArea
+modifiers = private
+
+
+-----
+constructors:
+
+constructor name   = gui.ReportFrame
+declaring class = class gui.ReportFrame
+
+
+-----
+method name  = report
+return type = void
+
+
+-----
+
+
+class: gui.SimulationFrame
+-----
+fields:
+
+field name  = head
+declaring class = class gui.SimulationFrame
+type  = class javax.swing.JLabel
+modifiers = private
+
+
+-----
+constructors:
+
+constructor name   = gui.SimulationFrame
+declaring class = class gui.SimulationFrame
+
+
+-----
+-----
+
+
+class: simulationComponents.Controller
+-----
+fields:
+
+field name  = minCustomerTimeDifference
+declaring class = class simulationComponents.Controller
+type  = double
+modifiers = private static
+
+
+field name  = maxCustomerTimeDifference
+declaring class = class simulationComponents.Controller
+type  = double
+modifiers = private static
+
+
+field name  = minCustomerServiceTime
+declaring class = class simulationComponents.Controller
+type  = double
+modifiers = private static
+
+
+field name  = maxCustomerServiceTime
+declaring class = class simulationComponents.Controller
+type  = double
+modifiers = private static
+
+
+field name  = maxQueues
+declaring class = class simulationComponents.Controller
+type  = int
+modifiers = private static
+
+
+field name  = queues
+declaring class = class simulationComponents.Controller
+type  = class java.util.ArrayList
+modifiers = private
+
+
+field name  = queueNumber
+declaring class = class simulationComponents.Controller
+type  = int
+modifiers = private
+
+
+-----
+constructors:
+
+constructor name   = simulationComponents.Controller
+declaring class = class simulationComponents.Controller
+param #0 double
+param #1 double
+param #2 double
+param #3 double
+param #4 int
+
+
+-----
+method name  = run
+return type = void
+
+
+method name  = optimize
+return type = void
+
+
+method name  = getMinCustomerTimeDifference
+return type = double
+
+
+method name  = getMaxCustomerTimeDifference
+return type = double
+
+
+method name  = getMinCustomerServiceTime
+return type = double
+
+
+method name  = getMaxCustomerServiceTime
+return type = double
+
+
+method name  = getMaxQueues
+return type = int
+
+
+method name  = setMinCustomerTimeDifference
+-----
+
+
+class: simulationComponents.Customer
+-----
+fields:
+
+field name  = x
+declaring class = class simulationComponents.Customer
+type  = int
+modifiers = private
+
+
+field name  = y
+declaring class = class simulationComponents.Customer
+type  = int
+modifiers = private
+
+
+field name  = timeDifference
+declaring class = class simulationComponents.Customer
+type  = double
+modifiers = private static
+
+
+field name  = serviceTime
+declaring class = class simulationComponents.Customer
+type  = double
+modifiers = private
+
+
+field name  = last
+declaring class = class simulationComponents.Customer
+type  = int
+modifiers = private
+
+
+-----
+constructors:
+
+constructor name   = simulationComponents.Customer
+declaring class = class simulationComponents.Customer
+param #0 int
+param #1 int
+param #2 double
+
+
+-----
+method name  = get_y
+return type = int
+
+
+method name  = paint
+-----
+
+
+class: simulationComponents.Queue
+-----
+fields:
+
+field name  = x
+declaring class = class simulationComponents.Queue
+type  = int
+modifiers = private
+
+
+field name  = y
+declaring class = class simulationComponents.Queue
+type  = int
+modifiers = private
+
+
+field name  = last
+declaring class = class simulationComponents.Queue
+type  = int
+modifiers = private
+
+
+field name  = servingStartTime
+declaring class = class simulationComponents.Queue
+type  = double
+modifiers = private
+
+
+field name  = queueNumber
+declaring class = class simulationComponents.Queue
+type  = int
+modifiers = private
+
+
+field name  = customers
+declaring class = class simulationComponents.Queue
+type  = class java.util.ArrayList
+modifiers = private
+
+
+field name  = customerTimeLabel
+declaring class = class simulationComponents.Queue
+type  = class javax.swing.JLabel
+modifiers = private
+
+
+field name  = queueTimeLabel
+declaring class = class simulationComponents.Queue
+type  = class javax.swing.JLabel
+modifiers = private
+
+
+-----
+constructors:
+
+constructor name   = simulationComponents.Queue
+declaring class = class simulationComponents.Queue
+param #0 int
+param #1 int
+param #2 int
+
+
+-----
+method name  = get_y
+return type = int
+
+
+method name  = paint
+-----
+
+
+class: simulationComponents.Simulation
+-----
+fields:
+
+field name  = simulationTime
+declaring class = class simulationComponents.Simulation
+type  = long
+modifiers = private static
+
+
+field name  = simulationFrame
+declaring class = class simulationComponents.Simulation
+type  = class gui.SimulationFrame
+modifiers = private static
+
+
+field name  = timer
+declaring class = class simulationComponents.Simulation
+type  = class java.util.Timer
+modifiers = private static
+
+
+-----
+constructors:
+
+constructor name   = simulationComponents.Simulation
+declaring class = class simulationComponents.Simulation
+param #0 int
+param #1 int
+param #2 int
+param #3 int
+param #4 int
+param #5 long
+
+
+-----
+method name  = write
+ param #0 class java.lang.Stringwith modifierpublic final
+return type = void
+
+
+method name  = isDone
+return type = boolean
+
+
+method name  = isTimeForMoreClients
+-----
+
+

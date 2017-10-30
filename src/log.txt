@@ -1,0 +1,9 @@
+new customer arrived to queue 1
+customer left from queue 1
+new customer arrived to queue 2
+new customer arrived to queue 2
+new customer arrived to queue 3
+new customer arrived to queue 3
+new customer arrived to queue 3
+new customer arrived to queue 3
+new customer arrived to queue 4
