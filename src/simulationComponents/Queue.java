@@ -22,12 +22,12 @@ public class Queue extends JPanel{
 	{
 		super.paint(g);
 		this.setBackground(Simulation.getSimulationFrame().getContentPane().getBackground());
-		this.setBounds(get_x(), get_y(), 10, 10);
+		this.setBounds(get_x(), get_y(), 20, 20);
 		if(last == 0) g.setColor(Color.BLACK);
 		else {g.setColor(Color.RED);last--;}
-		g.fillRect(0, 0, 10, 10);
-		getQueueTimeLabel().setBounds(x-120, y, 50, 10);
-		getCustomerTimeLabel().setBounds(x-40, y, 50, 10);
+		g.fillRect(0, 0, 15, 15);
+		getQueueTimeLabel().setBounds(x-120, y, 60, 10);
+		getCustomerTimeLabel().setBounds(x-40, y, 60, 10);
 	
 	}
 	
@@ -46,12 +46,24 @@ public class Queue extends JPanel{
 	
 	public void addCustomerToQueue(double serviceTime)
 	{
-		if(this.getCustomers().size()==0) this.getCustomers().add(new Customer(this.x + 15, this.y, serviceTime));		
-		else this.getCustomers().add(new Customer(this.getCustomers().get(this.getCustomers().size()-1).get_x()+15, this.y, serviceTime));     
+		if(this.getCustomers().size()==0) this.getCustomers().add(new Customer(this.x + 20, this.y, serviceTime));		
+		else this.getCustomers().add(new Customer(this.getCustomers().get(this.getCustomers().size()-1).get_x()+20, this.y, serviceTime));     
 		
 		Simulation.getSimulationFrame().add(this.getCustomers().get(this.getCustomers().size()-1));		
 		Simulation.getSimulationFrame().setVisible(true);
 	}
+	
+	
+	public void addCustomerToExpressQueue(double serviceTime) {
+		if(this.getCustomers().size()==0) this.getCustomers().add(new Customer(this.x + 20, this.y, serviceTime));		
+		else this.getCustomers().add(new Customer(this.getCustomers().get(this.getCustomers().size()-1).get_x()+20, this.y, serviceTime));     
+		
+		Simulation.getSimulationFrame().add(this.getCustomers().get(this.getCustomers().size()-1));		
+		Simulation.getSimulationFrame().setVisible(true);
+		
+		
+	}
+	
 	
 	public void removeCustomerFromQueue()
 	{
@@ -59,7 +71,7 @@ public class Queue extends JPanel{
 		this.getCustomers().remove(0);	
 		for(Customer temp : customers)
 		{
-			temp.set_x(temp.get_x()-15);
+			temp.set_x(temp.get_x()-20);
 			servingStartTime = System.currentTimeMillis();
 		}
 		Simulation.getSimulationFrame().repaint();

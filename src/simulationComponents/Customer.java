@@ -21,13 +21,13 @@ public class Customer extends JPanel{
 		super.paint(g);
 		this.setBackground(Simulation.getSimulationFrame().getContentPane().getBackground());
 		
-		this.setBounds(get_x(), get_y(), 10, 10);
+		this.setBounds(get_x(), get_y(), 17, 17);
 		if(last == 0 ) g.setColor(Color.BLUE);
 		//if(last < 0 ){g.setColor(Color.YELLOW);last++;}
 		if(last > 0 ) {g.setColor(Color.RED);last--;}
 			
 		
-		g.fillOval(0, 0, 10, 10);
+		g.fillOval(0, 0, 17, 17);
 		
 	}
 	

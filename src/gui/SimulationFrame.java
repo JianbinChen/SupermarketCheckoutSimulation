@@ -9,7 +9,7 @@ import javax.swing.SpringLayout;
 @SuppressWarnings("serial")
 public class SimulationFrame extends JFrame{
 
-	private JLabel head =  new JLabel("<html><p>Queue Time | Customer Time</p></html>");
+	private JLabel head =  new JLabel("<html><h3>Queue Time | Customer Time</h3></html>");
 	
 	
 	public SimulationFrame()
@@ -17,7 +17,7 @@ public class SimulationFrame extends JFrame{
 	super("Simulation Window");
 	this.setBounds(200, 20, 850, 680);
 	this.setResizable(false);
-	this.getContentPane().setBackground(Color.pink);
+	this.getContentPane().setBackground(Color.lightGray);
 	this.getContentPane().setLayout(new SpringLayout());
 	this.add(head);
 	this.setVisible(true);

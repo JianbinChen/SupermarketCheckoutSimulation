@@ -26,6 +26,12 @@ private ActionListener startListener = new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
 			int minCustomerTimeDifference = 0;
 			int maxCustomerTimeDifference = 0;
+			
+			int minProductNumber = 0;
+			int maxProductNumber = 0;
+			int minProductServiceTime = 0;
+			int maxProductServiceTime = 0;
+			
 			int minCustomerServiceTime = 0;
 			int maxCustomerServiceTime = 0;
 			int maxQueues = 0;
@@ -35,14 +41,22 @@ private ActionListener startListener = new ActionListener() {
 			try{
 				minCustomerTimeDifference = Integer.parseInt(getMainFrame().getMinCustomerTimeDifference().getText());
 				maxCustomerTimeDifference = Integer.parseInt(getMainFrame().getMaxCustomerTimeDifference().getText());
-				minCustomerServiceTime = Integer.parseInt(getMainFrame().getMinProductServiceTime().getText());
-				maxCustomerServiceTime = Integer.parseInt(getMainFrame().getMaxProductServiceTime().getText());
+				minProductServiceTime = Integer.parseInt(getMainFrame().getMinProductServiceTime().getText());
+				maxProductServiceTime = Integer.parseInt(getMainFrame().getMaxProductServiceTime().getText());
+				minProductNumber = Integer.parseInt(getMainFrame().getMinProductNumber().getText());
+				maxProductNumber = Integer.parseInt(getMainFrame().getMaxProductNumber().getText());
+
+				
 				maxQueues = Integer.parseInt(getMainFrame().getMaxQueues().getText());
 				simulationTime = Integer.parseInt(getMainFrame().getSimulationTime().getText());
 			}
 			catch(Exception e){JOptionPane.showMessageDialog(new JFrame(),e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);return;}
 			
-			new Simulation( minCustomerTimeDifference, maxCustomerTimeDifference, minCustomerServiceTime, maxCustomerServiceTime, maxQueues, simulationTime);
+//			minCustomerServiceTime = minProductNumber*minProductServiceTime;
+//			maxCustomerServiceTime = maxProductNumber*maxProductServiceTime;
+			minCustomerServiceTime =  1;
+			maxCustomerServiceTime = 1200;
+			new Simulation( minCustomerTimeDifference, maxCustomerTimeDifference, minCustomerServiceTime, maxCustomerServiceTime, maxQueues, simulationTime,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime);
 			
 			
 		}

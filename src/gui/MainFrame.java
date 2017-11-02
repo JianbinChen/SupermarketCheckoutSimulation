@@ -9,24 +9,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-/**
- * Extends the class JFrame and is used for user interface
- * 
- * 
- * @author Tranca Daniel
- */
+// Extends the class JFrame and is used for user interface
 
 
-@SuppressWarnings("serial")
 public class MainFrame  extends JFrame{
 	//interface fields
 	private JTextField minCustomerTimeDifference = new JTextField("0");
-	private JTextField maxCustomerTimeDifference = new JTextField("1");
+	private JTextField maxCustomerTimeDifference = new JTextField("60");
 	private JTextField minProductNumber = new JTextField("1");
 	private JTextField maxProductNumber = new JTextField("200");
 	private JTextField minProductServiceTime = new JTextField("0");
 	private JTextField maxProductServiceTime = new JTextField("5");
-	private JTextField maxQueues = new JTextField("15");
+	private JTextField maxQueues = new JTextField("8");
 	private JTextField expressCheckoutNumbers = new JTextField("2");
 	private JTextField simulationTime = new JTextField("15");
 
@@ -53,48 +47,47 @@ public class MainFrame  extends JFrame{
 	private JButton lowCustomerRate = new JButton("Low Customer rate");
 
 	private JButton highCustomerRate = new JButton("High Customer rate");
-//	private JButton standardFlux = new JButton("Standard Flux Data");
 	private JButton report = new JButton("Report ");
-//	private JButton reflection = new JButton("Reflection");
+
 	
 	public void menu() {
 	
-		this.add(new JLabel("Minimum Customer Rate", JLabel.TRAILING));
+		this.add(new JLabel("Minimum Customer Rate:", JLabel.TRAILING));
 		this.add(getMinCustomerTimeDifference());
 		
 		
 		
-		this.add(new JLabel("Maximum Customer Rate", JLabel.TRAILING));
+		this.add(new JLabel("Maximum Customer Rate:", JLabel.TRAILING));
 		this.add(getMaxCustomerTimeDifference());
 		
 		
 		
-		this.add(new JLabel("Minimum pruducts number: ", JLabel.TRAILING));
+		this.add(new JLabel("Minimum pruducts number:", JLabel.TRAILING));
 		this.add(getMinProductNumber());
 		
 		
-		this.add(new JLabel("Maximum pruducts number: ", JLabel.TRAILING));
+		this.add(new JLabel("Maximum pruducts number:", JLabel.TRAILING));
 		this.add(getMaxProductNumber());
 		
 		
-		this.add(new JLabel("minimum Product Check time: ", JLabel.TRAILING));
+		this.add(new JLabel("minimum Product Check time:", JLabel.TRAILING));
 		this.add(getMinProductServiceTime());
 		
 		
-		this.add(new JLabel("maximum Product service time: ", JLabel.TRAILING));
+		this.add(new JLabel("maximum Product service time:", JLabel.TRAILING));
 		this.add(getMaxProductServiceTime());
 		
 		
-		this.add(new JLabel("maximum number of queues: ", JLabel.TRAILING));
+		this.add(new JLabel("maximum number of queues:", JLabel.TRAILING));
 		this.add(getMaxQueues());
 		
 		
-		this.add(new JLabel("the numbers of express checkout: ", JLabel.TRAILING));
+		this.add(new JLabel("the numbers of express checkout:", JLabel.TRAILING));
 		this.add(getExpressCheckoutNumbers());
 		
 		
 		
-		this.add(new JLabel("simulation time: ", JLabel.TRAILING));
+		this.add(new JLabel("simulation time:", JLabel.TRAILING));
 		this.add(getSimulationTime());
 		this.add(getlowCustomerRate());
 		this.add(gethighCustomerRate());
@@ -102,7 +95,6 @@ public class MainFrame  extends JFrame{
 		this.add(getStart());
 		this.add(getReport());
 		
-	//	this.add(getReflection());
 		this.setVisible(true);
 		
 	}
@@ -127,17 +119,6 @@ public class MainFrame  extends JFrame{
 		return lowCustomerRate;
 	}
 
-
-//	public void setStandardFlux(JButton standardFlux) {
-//		this.standardFlux = standardFlux;
-//	}
-//
-//
-//	public JButton getStandardFlux() {
-//		return standardFlux;
-//	}
-
-
 	public void sethighCustomerRate(JButton highCustomerRate) {
 		this.highCustomerRate = highCustomerRate;
 	}
@@ -156,16 +137,6 @@ public class MainFrame  extends JFrame{
 	public JButton getReport() {
 		return report;
 	}
-
-
-//	public void setReflection(JButton reflection) {
-//		this.reflection = reflection;
-//	}
-//
-//
-//	public JButton getReflection() {
-//		return reflection;
-//	}
 
 
 	public void setMinCustomerTimeDifference(JTextField minCustomerTimeDifference) {

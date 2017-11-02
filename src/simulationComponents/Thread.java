@@ -15,21 +15,37 @@ public class Thread extends TimerTask{
 	private static int mixProductNumber;
 	private static int maxProductNumber;
 	
+	private static double minProductServiceTime;
+	private static double maxProductServiceTime;
+	
+	
+	
+	
+	
+	
 	private static int maxQueues;	
 	private ArrayList<Queue> queues = new ArrayList<Queue>();
 	private int queueNumber = 1;
 	
 	
-	public Thread ( double minCustomerTimeDifference, double maxCustomerTimeDifference, double minCustomerServiceTime, double maxCustomerServiceTime, int maxQueues)
+	public Thread ( double minCustomerTimeDifference, double maxCustomerTimeDifference, double minCustomerServiceTime, double maxCustomerServiceTime, int maxQueues,int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime)
 	{
 		Thread.minCustomerTimeDifference = minCustomerTimeDifference * 1000;
 		Thread.maxCustomerTimeDifference = maxCustomerTimeDifference * 1000;
 		Customer.setTimeDifference(System.currentTimeMillis());
 		Thread.minCustomerServiceTime = minCustomerServiceTime * 1000;
 		Thread.maxCustomerServiceTime = maxCustomerServiceTime * 1000;
+/*****/
+		Thread.minCustomerServiceTime = 1;
+		Thread.maxCustomerServiceTime = 8;
+/****/		
 		Thread.maxQueues = maxQueues;//maximum customers in the queue
 		
-  
+		Thread.mixProductNumber = minProductNumber ;
+		Thread.maxProductNumber = maxProductNumber ;
+		Thread.minProductServiceTime = minProductServiceTime ;
+		Thread.maxProductServiceTime = maxProductServiceTime ;
+		
 	}
 	//method from timerTask
 	@Override
@@ -56,12 +72,6 @@ public class Thread extends TimerTask{
 		//repaints the frame
 		if(System.currentTimeMillis()%1000<=10)
 			repaint();
-		
-		
-		
-		
-		
-		
 				
 	}
 
@@ -173,12 +183,31 @@ public class Thread extends TimerTask{
 		Random generator = new Random();
 		double arrivalTime = 0;
 		arrivalTime = generator.nextDouble()*(maxCustomerTimeDifference-minCustomerTimeDifference)+minCustomerTimeDifference;
-		double serviceTime = 0;
-		serviceTime = generator.nextDouble()*(maxCustomerServiceTime-minCustomerServiceTime)+minCustomerServiceTime;
+			
 		int productNumber  = 0;
-		productNumber = generator.nextInt()*(maxProductNumber - mixProductNumber) + mixProductNumber;
+		productNumber = (int)(generator.nextDouble()*(maxProductNumber - mixProductNumber) + mixProductNumber);
 		
+		double customerServiceTime = 0;
+		double serviceProductTime = 0;
 		
+		for(int i=0; i<productNumber ;i++) {
+			serviceProductTime = generator.nextDouble()*(maxProductServiceTime-minProductServiceTime)+minProductServiceTime;
+			System.out.println("ServiceProductTime" + serviceProductTime);
+			System.out.println("productNumber" + productNumber);
+			customerServiceTime += serviceProductTime;
+		}
+		System.out.println("customerServiceTime" + customerServiceTime);
+		
+	
+//		
+//		if(queues.size()==0 && expressCheckoutNumbers ==1 ) {
+//			queues.add(new Queue(150,30,queueNumber++));
+//				}
+//		for(int i =1 ;i< expressCheckoutNumbers;i++) {
+//			queues.add(new Queue(150,queues.get(queues.size()-1).get_y()+20,queueNumber++));
+//			
+//		}
+//		
 		
 		if(queues.size()==0) {
 			queues.add(new Queue(150,30,queueNumber++));
@@ -202,6 +231,10 @@ public class Thread extends TimerTask{
 		 *   
 		 *   			 		  VALUE
 		 *                  		|									*/
+		
+		
+		
+		
 		if(minServiceTime > maxCustomerServiceTime && queues.size()<maxQueues) 
 			{	
 			queues.add(new Queue(150,queues.get(queues.size()-1).get_y()+20,queueNumber++));
@@ -210,7 +243,7 @@ public class Thread extends TimerTask{
 			}
 		
 		Simulation.getSimulationFrame().add(queues.get(iterator));		
-		queues.get(iterator).addCustomerToQueue(serviceTime);
+		queues.get(iterator).addCustomerToQueue(customerServiceTime);
 		Simulation.write("new customer arrived to queue " + queues.get(iterator).getQueueNumber());
 		if(queues.get(iterator).getCustomers().size() == 1) queues.get(iterator).setServingStartTime(System.currentTimeMillis());
 		Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
