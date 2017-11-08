@@ -1,9 +1,327 @@
-new customer arrived to queue 1
-customer left from queue 1
-new customer arrived to queue 2
-new customer arrived to queue 2
 new customer arrived to queue 3
-new customer arrived to queue 3
-new customer arrived to queue 3
-new customer arrived to queue 3
+total time for each customer3603000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
 new customer arrived to queue 4
+total time for each customer2402000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 5
+total time for each customer3603000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 6
+total time for each customer4804000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 7
+total time for each customer6005000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 6
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 6
+new customer arrived to queue 6
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 7
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 3
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 6
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 7
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 6
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 7
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 6
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 8
+customer left from queue 7
+customer left from queue 5
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 4
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 8
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 9
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 10
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 6
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 7
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 11
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 10
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 8
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 7
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 8
+customer left from queue 9
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 6
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 9
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 11
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 8
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 8
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 10
+new customer arrived to queue 11
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+new customer arrived to queue 10
+total time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008

@@ -13,7 +13,7 @@ public class Simulation {
 	private static SimulationFrame simulationFrame;
 	private static Timer timer;
 	
-	public Simulation( int minCustomerTimeDifference, int maxCustomerTimeDifference, int minCustomerServiceTime, int maxCustomerServiceTime, int maxQueues, long simulationTime, int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime)
+	public Simulation( int minCustomerTimeDifference, int maxCustomerTimeDifference, int minCustomerServiceTime, int maxCustomerServiceTime, int maxQueues, long simulationTime, int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime,int expressCheckoutNumberes)
 	{
 		simulationFrame = new SimulationFrame();
 		this.simulationTime = simulationTime*1000+System.currentTimeMillis(); // the time that the pop-up window will be retained
@@ -24,7 +24,7 @@ public class Simulation {
 		} catch (IOException e) {System.out.println(e.getMessage());
 		}
 		timer = new Timer();
-		timer.schedule(new Thread(minCustomerTimeDifference, maxCustomerTimeDifference, minCustomerServiceTime, maxCustomerServiceTime, maxQueues,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime), 1000,10);
+		timer.schedule(new Thread(minCustomerTimeDifference, maxCustomerTimeDifference, minCustomerServiceTime, maxCustomerServiceTime, maxQueues,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime,expressCheckoutNumberes), 1000,10);
 			
 	}
 	//true is there is no more time to add a new client in order to serve him

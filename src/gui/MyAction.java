@@ -10,5 +10,4 @@ public class MyAction implements AdjustmentListener {
 		// TODO Auto-generated method stub
 
 	}
-
 }

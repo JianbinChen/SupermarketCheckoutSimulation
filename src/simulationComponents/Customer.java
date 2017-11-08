@@ -87,10 +87,4 @@ public class Customer extends JPanel{
 		return timeDifference;
 	}
 
-
-
-	
-
-
-
 }

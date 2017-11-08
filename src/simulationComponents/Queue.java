@@ -54,16 +54,6 @@ public class Queue extends JPanel{
 	}
 	
 	
-	public void addCustomerToExpressQueue(double serviceTime) {
-		if(this.getCustomers().size()==0) this.getCustomers().add(new Customer(this.x + 20, this.y, serviceTime));		
-		else this.getCustomers().add(new Customer(this.getCustomers().get(this.getCustomers().size()-1).get_x()+20, this.y, serviceTime));     
-		
-		Simulation.getSimulationFrame().add(this.getCustomers().get(this.getCustomers().size()-1));		
-		Simulation.getSimulationFrame().setVisible(true);
-		
-		
-	}
-	
 	
 	public void removeCustomerFromQueue()
 	{
@@ -90,7 +80,7 @@ public class Queue extends JPanel{
 		double sum = 0;
 		for(Customer temp : customers)
 		{
-			sum += temp.getServiceTime();		
+			sum += temp.getServiceTime();
 		}
 		return sum;
 	}

@@ -15,14 +15,14 @@ import javax.swing.JTextField;
 public class MainFrame  extends JFrame{
 	//interface fields
 	private JTextField minCustomerTimeDifference = new JTextField("0");
-	private JTextField maxCustomerTimeDifference = new JTextField("60");
+	private JTextField maxCustomerTimeDifference = new JTextField("6");
 	private JTextField minProductNumber = new JTextField("1");
-	private JTextField maxProductNumber = new JTextField("200");
-	private JTextField minProductServiceTime = new JTextField("0");
-	private JTextField maxProductServiceTime = new JTextField("5");
+	private JTextField maxProductNumber = new JTextField("2000");
+	private JTextField minProductServiceTime = new JTextField("5");
+	private JTextField maxProductServiceTime = new JTextField("60");
 	private JTextField maxQueues = new JTextField("8");
 	private JTextField expressCheckoutNumbers = new JTextField("2");
-	private JTextField simulationTime = new JTextField("15");
+	private JTextField simulationTime = new JTextField("1500");
 
 	
  
@@ -47,7 +47,7 @@ public class MainFrame  extends JFrame{
 	private JButton lowCustomerRate = new JButton("Low Customer rate");
 
 	private JButton highCustomerRate = new JButton("High Customer rate");
-	private JButton report = new JButton("Report ");
+//	private JButton report = new JButton("Report ");
 
 	
 	public void menu() {
@@ -93,7 +93,6 @@ public class MainFrame  extends JFrame{
 		this.add(gethighCustomerRate());
 		
 		this.add(getStart());
-		this.add(getReport());
 		
 		this.setVisible(true);
 		
@@ -126,16 +125,6 @@ public class MainFrame  extends JFrame{
 
 	public JButton gethighCustomerRate() {
 		return highCustomerRate;
-	}
-
-
-	public void setReport(JButton report) {
-		this.report = report;
-	}
-
-
-	public JButton getReport() {
-		return report;
 	}
 
 
@@ -205,8 +194,6 @@ public class MainFrame  extends JFrame{
 	public void setExpressCheckoutNumbers(JTextField expressCheckoutNumbers){
 		this.expressCheckoutNumbers =  expressCheckoutNumbers;
 	}
-	
-
 	
 	public void setSimulationTime(JTextField simulationTime) {
 		this.simulationTime = simulationTime;
