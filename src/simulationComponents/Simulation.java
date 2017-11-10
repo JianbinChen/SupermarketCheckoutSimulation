@@ -24,22 +24,18 @@ public class Simulation {
 		} catch (IOException e) {System.out.println(e.getMessage());
 		}
 		timer = new Timer();
-		timer.schedule(new Thread(minCustomerTimeDifference, maxCustomerTimeDifference, minCustomerServiceTime, maxCustomerServiceTime, maxQueues,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime,expressCheckoutNumberes), 1000,10);
-			
+		timer.schedule(new Thread(minCustomerTimeDifference, maxCustomerTimeDifference, minCustomerServiceTime, maxCustomerServiceTime, maxQueues,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime,expressCheckoutNumberes), 1000,10);		
 	}
-	//true is there is no more time to add a new client in order to serve him
-	//before the end of simulation
+	
 	public static boolean isTimeForMoreClients(double maxTime)
 	{
 		if(simulationTime - maxTime - 1000 < System.currentTimeMillis())     //really don't understand it  
 		{			
 			return true;
 		}
-		return false;	
-		
-		
-		
+		return false;		
 	}
+	
 	//true if the simulation is done
 	public static boolean isDone()
 	{		
@@ -53,7 +49,7 @@ public class Simulation {
 		}
 		return false;	
 	}
-	//writes a specific string to the file log.txt
+	
 	public static void write(String string)
 	{
 		try {

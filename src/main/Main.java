@@ -4,9 +4,6 @@ import gui.MainFrame;
 
 public class Main {
 
-	/**
-	 * @param args
-	 */
 	private static MainFrame mainFrame;
 	private static Controller controller;
 	public static void main(String[] args) {

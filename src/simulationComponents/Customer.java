@@ -15,7 +15,6 @@ public class Customer extends JPanel{
 	private int last = 10;
 	private int productNumber;
 	
-	
 	public void paint(Graphics g)
 	{
 		super.paint(g);
@@ -23,22 +22,17 @@ public class Customer extends JPanel{
 		
 		this.setBounds(get_x(), get_y(), 17, 17);
 		if(last == 0 ) g.setColor(Color.BLUE);
-		//if(last < 0 ){g.setColor(Color.YELLOW);last++;}
 		if(last > 0 ) {g.setColor(Color.RED);last--;}
-			
-		
-		g.fillOval(0, 0, 17, 17);
-		
+		g.fillOval(0, 0, 17, 17);	
 	}
 	
 	public Customer(int x, int y, double serviceTime) {
 		super();
 		this.set_x(x);
 		this.set_y(y);
-		this.setServiceTime(serviceTime);
-		
+		this.setServiceTime(serviceTime);	
 	}	
-
+	
 	/**
 	 * x axis setter
 	 * @param x x axis value
@@ -74,15 +68,11 @@ public class Customer extends JPanel{
 	public double getServiceTime() {
 		return serviceTime;
 	}
-
-
-
+	
 	public static void setTimeDifference(double timeDifference) {
 		Customer.timeDifference = timeDifference;
 	}
-
-
-
+	
 	public static double getTimeDifference() {
 		return timeDifference;
 	}

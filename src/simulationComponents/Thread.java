@@ -269,50 +269,7 @@ public class Thread extends TimerTask{
 	
 	
 	
-//	private void newCustomer()
-//	{
-//		Random generator = new Random();
-//		double arrivalTime = 0;
-//		arrivalTime = generator.nextDouble()*(maxCustomerTimeDifference-minCustomerTimeDifference)+minCustomerTimeDifference;
-//		double serviceTime = 0;
-//		serviceTime = generator.nextDouble()*(maxCustomerServiceTime-minCustomerServiceTime)+minCustomerServiceTime;
-//		
-//		if(queues.size()==0) {
-//			queues.add(new Queue(150,30,queueNumber++));
-//			//Simulation.getSimulationFrame().add(queues.get(0));
-//				}
-//		double minServiceTime = Integer.MAX_VALUE;
-//		int iterator=0;
-//		for(int i=0;i<queues.size();i++)
-//		{
-//			if(queues.get(i).timeToServe()<minServiceTime) {
-//				minServiceTime = queues.get(i).timeToServe();
-//				iterator=i;
-//				}		
-//		}
-//		
-//		
-//		/*
-//		 *   /////////////////////////////////
-//		 *   !!!!!!!!!ATTENTION!!!!!!!!!!
-//		 *   HERE IS THE VALUE OF HOW MANY PEOPLE SHOULD BE ON A QUEUE
-//		 *   
-//		 *   			 		  VALUE
-//		 *                  		|									*/
-//		if(minServiceTime > maxCustomerServiceTime && queues.size()<maxQueues) 
-//			{	
-//			queues.add(new Queue(150,queues.get(queues.size()-1).get_y()+20,queueNumber++));
-//			iterator=queues.size()-1; // generate a new Queue 
-//			
-//			}
-//		
-//		Simulation.getSimulationFrame().add(queues.get(iterator));		
-//		queues.get(iterator).addCustomerToQueue(serviceTime);
-//		Simulation.write("new customer arrived to queue " + queues.get(iterator).getQueueNumber());
-//		if(queues.get(iterator).getCustomers().size() == 1) queues.get(iterator).setServingStartTime(System.currentTimeMillis());
-//		Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
-//		Simulation.getSimulationFrame().setVisible(true);
-//	}	
+
 	
 	public void setMinCustomerServiceTime(double minCustomerServiceTime) {
 		Thread.minCustomerServiceTime = minCustomerServiceTime;

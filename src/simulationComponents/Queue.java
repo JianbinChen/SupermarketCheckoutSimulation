@@ -84,7 +84,7 @@ public class Queue extends JPanel{
 		}
 		return sum;
 	}
-	
+
 	public void displayRemainingTime()
 	{
 		String string,string2;
@@ -95,10 +95,7 @@ public class Queue extends JPanel{
 		string2=Integer.toString(time/60) + ":" + Integer.toString(time%60);
 		if(System.currentTimeMillis()%1000<=10) {getCustomerTimeLabel().setText(string);getQueueTimeLabel().setText(string2);}	
 	}
-	
-	
-	
-	
+		
 	/**
 	 * x axis setter
 	 * @param x x axis value
