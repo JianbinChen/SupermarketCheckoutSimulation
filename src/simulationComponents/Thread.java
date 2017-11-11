@@ -5,8 +5,6 @@ import java.util.Random;
 import java.util.TimerTask;
 
 public class Thread extends TimerTask{
-	
-	
 	private static double minCustomerTimeDifference;
 	private static double maxCustomerTimeDifference;
 	private static double minCustomerServiceTime;
@@ -22,9 +20,7 @@ public class Thread extends TimerTask{
 	private static int maxQueues;	
 	private ArrayList<Queue> queues = new ArrayList<Queue>();
 	
-	
 	private int queueNumber = 1;
-	private int expressQueueNumber = 1;
 	
 	
 	public Thread ( double minCustomerTimeDifference, double maxCustomerTimeDifference, double minCustomerServiceTime, double maxCustomerServiceTime, int maxQueues,int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime,int expressCheckoutNumberes)
@@ -59,21 +55,15 @@ public class Thread extends TimerTask{
 		//removes served clients
 		removeServedClients();
 		
-		
-		
 		//removes unused queues
 		while (removeUnusedQueues()==true);
-		
-		//optimize();
-		
+	
 		//repaints the frame
 		if(System.currentTimeMillis()%1000<=10)
 			repaint()
-			;
-				
+			;			
 	}
-
-
+	
 	private double maxServeTime() {
 		double time=0;
 		for(Queue temp:queues)
@@ -83,39 +73,7 @@ public class Thread extends TimerTask{
 		if(time==0) time=maxCustomerServiceTime+maxCustomerTimeDifference;
 		return time;
 	}
-	//used to optimize the queues but since the 
-	//testing showed that this method is never used as intended is unused
-	@SuppressWarnings("unused")
-	private void optimize() {
-		double maxServiceTime = -1;
-		double minServiceTime = Integer.MAX_VALUE;
-		int queueIteratorFrom = -1;
-		int queueIteratorTo = -1;
-		for(Queue temp : queues)
-		{
-			if(temp.getCustomers().get(temp.getCustomers().size()-1).getServiceTime() > maxServiceTime)
-				{
-				maxServiceTime = temp.timeToServe();
-				queueIteratorFrom = queues.indexOf(temp);
-				}
-			if(temp.timeToServe() < minServiceTime)
-				{
-				minServiceTime = temp.timeToServe();
-				queueIteratorTo = queues.indexOf(temp);
-				}
-		
-		}
-		if(queueIteratorFrom<2 || queueIteratorTo<2) return;
-		if(queues.get(queueIteratorTo).timeToServe() + maxServiceTime < queues.get(queueIteratorFrom).timeToServe())
-		{
-			Customer customer = queues.get(queueIteratorTo).getCustomers().get(queues.get(queueIteratorTo).getCustomers().size()-1);
-			customer.set_x(queues.get(queueIteratorFrom).get_x());
-			queues.get(queueIteratorFrom).getCustomers().add(customer);
-			//System.out.println("da");
-			
-		}
-		
-	}
+
 	private void repaint() {
 		if(queues.size() ==0) return;
 		for(Queue temp:queues)
@@ -146,22 +104,22 @@ public class Thread extends TimerTask{
 	}
 	//removes unused queues
 	private boolean removeUnusedQueues() {
-		for(Queue temp : queues)
-		//for(int i=expressCheckoutNumberes; i<queues.size();i++)
+		//for(Queue temp : queues)
+		for(int i=expressCheckoutNumberes; i<queues.size();i++)
 		{
-			if(temp.getCustomers().size() == 0) 
-	//		if(queues.get(i).getCustomers().size() == 0)
+		//	if(temp.getCustomers().size() == 0) 
+			if(queues.get(i).getCustomers().size() == 0)
 			{
-				Simulation.getSimulationFrame().getContentPane().remove(temp.getCustomerTimeLabel());
-				Simulation.getSimulationFrame().getContentPane().remove(temp.getQueueTimeLabel());
-				Simulation.getSimulationFrame().getContentPane().remove(temp);
-				queues.remove(temp);
+//				Simulation.getSimulationFrame().getContentPane().remove(temp.getCustomerTimeLabel());
+//				Simulation.getSimulationFrame().getContentPane().remove(temp.getQueueTimeLabel());
+//				Simulation.getSimulationFrame().getContentPane().remove(temp);
+//				queues.remove(temp);
 				
-//				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i).getCustomerTimeLabel());
-//				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i).getQueueTimeLabel());
-//				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i));
-//				queues.remove(queues.get(i));
-//				Simulation.getSimulationFrame().repaint();
+				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i).getCustomerTimeLabel());
+				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i).getQueueTimeLabel());
+				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i));
+				queues.remove(queues.get(i));
+				Simulation.getSimulationFrame().repaint();
 				
 				return true;
 			}	
@@ -183,19 +141,20 @@ public class Thread extends TimerTask{
 			}	
 		}		
 	}
-
 	
 	private void newCustomer()
 	{
-		Random generator = new Random();
 		double arrivalTime = 0;
-		arrivalTime = generator.nextDouble()*(maxCustomerTimeDifference-minCustomerTimeDifference)+minCustomerTimeDifference;
-			
+		int expressIterator =0;
 		int productNumber  = 0;
-		productNumber = (int)(generator.nextDouble()*(maxProductNumber - mixProductNumber) + mixProductNumber);
-		
 		double customerServiceTime = 0;
 		double serviceProductTime = 0;
+		double minServiceTime = Integer.MAX_VALUE;
+		int iterator=0;
+		
+		Random generator = new Random();
+		arrivalTime = generator.nextDouble()*(maxCustomerTimeDifference-minCustomerTimeDifference)+minCustomerTimeDifference;
+		productNumber = (int)(generator.nextDouble()*(maxProductNumber - mixProductNumber) + mixProductNumber);
 		
 		for(int i=0; i<productNumber ;i++) {
 			serviceProductTime = generator.nextDouble()*(maxProductServiceTime-minProductServiceTime)+minProductServiceTime;
@@ -218,8 +177,7 @@ public class Thread extends TimerTask{
 				}
 		
 		//find which queue's waiting time is least
-		double minServiceTime = Integer.MAX_VALUE;
-		int iterator=0;
+		
 		for(int i=expressCheckoutNumberes;i<queues.size();i++)
 		{
 			if(queues.get(i).timeToServe()<minServiceTime) {
@@ -228,18 +186,14 @@ public class Thread extends TimerTask{
 				}		
 		}
 		
-		int expressIterator =0;
-//		for (int i=0;i<expressCheckoutNumberes;i++)
-//		{
-//			if(queues.get(i).timeToServe()<minServiceTime) {
-//				minServiceTime = queues.get(i).timeToServe();
-//				expressIterator=i;
-//				}	
-//		}
-//		
-		
-			
-		if(minServiceTime > 1000 && queues.size()<maxQueues-expressCheckoutNumberes) 
+		for (int i=0;i<expressCheckoutNumberes;i++)
+		{
+			if(queues.get(i).timeToServe()<minServiceTime) {
+				expressIterator=i;
+				}	
+		}
+		System.out.println("minServiceTime"+minServiceTime);
+		if(minServiceTime > 1000 && queues.size()<maxQueues) 
 			{	
 			queues.add(new Queue(150,queues.get(queues.size()-1).get_y()+20,queueNumber++));
 			iterator=queues.size()-1; // generate a new Queue 
@@ -249,27 +203,27 @@ public class Thread extends TimerTask{
 			}
 		
 		System.out.println("queues.size()"+queues.size());
-			
-		
-		Simulation.getSimulationFrame().add(queues.get(iterator));		
-//		if(productNumber <= 1500)
-//			queues.get(1).addCustomerToQueue(customerServiceTime);
-//		else	
+	
+		Simulation.getSimulationFrame().add(queues.get(iterator));
+		System.out.println("productNumber==="+productNumber);
+		if(productNumber <= 600) {
+			queues.get(expressIterator).addCustomerToQueue(customerServiceTime);
+			if(queues.get(expressIterator).getCustomers().size() == 1) queues.get(expressIterator).setServingStartTime(System.currentTimeMillis());
+			Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
+			Simulation.getSimulationFrame().setVisible(true);
+		}
+		else	{
 			queues.get(iterator).addCustomerToQueue(customerServiceTime);
+			if(queues.get(iterator).getCustomers().size() == 1) queues.get(iterator).setServingStartTime(System.currentTimeMillis());
+			Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
+			Simulation.getSimulationFrame().setVisible(true);
+		}
 		
-		Simulation.write("new customer arrived to queue " + queues.get(iterator).getQueueNumber());
-		if(queues.get(iterator).getCustomers().size() == 1) queues.get(iterator).setServingStartTime(System.currentTimeMillis());
-		Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
-		Simulation.getSimulationFrame().setVisible(true);
 		Simulation.write("total wait time for each customer"+ queues.size()*(minCustomerServiceTime+maxCustomerServiceTime));
 		Simulation.write("Total utilization for eah checkout"+ maxQueues*(minProductServiceTime+maxProductServiceTime));
 		Simulation.write("total products processed"+maxQueues*(mixProductNumber+maxProductNumber));
 		Simulation.write("Average customer wait time"+maxQueues*(mixProductNumber+maxProductNumber));
 	}
-	
-	
-	
-
 	
 	public void setMinCustomerServiceTime(double minCustomerServiceTime) {
 		Thread.minCustomerServiceTime = minCustomerServiceTime;

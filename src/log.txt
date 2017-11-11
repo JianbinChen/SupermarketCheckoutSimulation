@@ -1,15 +1,21 @@
-new customer arrived to queue 3
 total wait time for each customer3603000.0
 Total utilization for eah checkout520.0
 total products processed16008
 Average customer wait time16008
-new customer arrived to queue 4
-total wait time for each customer2402000.0
+total wait time for each customer3603000.0
 Total utilization for eah checkout520.0
 total products processed16008
 Average customer wait time16008
-new customer arrived to queue 5
 total wait time for each customer3603000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+customer left from queue 1
+total wait time for each customer4804000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer6005000.0
 Total utilization for eah checkout520.0
 total products processed16008
 Average customer wait time16008

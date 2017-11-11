@@ -87,6 +87,7 @@ public class Queue extends JPanel{
 
 	public void displayRemainingTime()
 	{
+		if(customers.size() ==0) return;
 		String string,string2;
 		long timeNow = System.currentTimeMillis();
 		int time = (int) ((this.servingStartTime + customers.get(0).getServiceTime() - timeNow )/1000);
