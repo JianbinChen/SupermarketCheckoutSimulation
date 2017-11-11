@@ -2,20 +2,99 @@ total wait time for each customer3603000.0
 Total utilization for eah checkout520.0
 total products processed16008
 Average customer wait time16008
-total wait time for each customer3603000.0
+total wait time for each customer4804000.0
 Total utilization for eah checkout520.0
 total products processed16008
 Average customer wait time16008
-total wait time for each customer3603000.0
-Total utilization for eah checkout520.0
-total products processed16008
-Average customer wait time16008
-customer left from queue 1
 total wait time for each customer4804000.0
 Total utilization for eah checkout520.0
 total products processed16008
 Average customer wait time16008
 total wait time for each customer6005000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer6005000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer6005000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer7206000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer8407000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
+Total utilization for eah checkout520.0
+total products processed16008
+Average customer wait time16008
+total wait time for each customer9608000.0
 Total utilization for eah checkout520.0
 total products processed16008
 Average customer wait time16008

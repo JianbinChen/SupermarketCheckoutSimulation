@@ -9,19 +9,15 @@ public class Thread extends TimerTask{
 	private static double maxCustomerTimeDifference;
 	private static double minCustomerServiceTime;
 	private static double maxCustomerServiceTime;
-	
 	private static int mixProductNumber;
 	private static int maxProductNumber;
-	
 	private static double minProductServiceTime;
 	private static double maxProductServiceTime;
 	private static int expressCheckoutNumberes;
-	
 	private static int maxQueues;	
 	private ArrayList<Queue> queues = new ArrayList<Queue>();
-	
 	private int queueNumber = 1;
-	
+	private static int tee =0;
 	
 	public Thread ( double minCustomerTimeDifference, double maxCustomerTimeDifference, double minCustomerServiceTime, double maxCustomerServiceTime, int maxQueues,int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime,int expressCheckoutNumberes)
 	{
@@ -31,9 +27,7 @@ public class Thread extends TimerTask{
 		Thread.minCustomerServiceTime = minCustomerServiceTime *1000;        
 		Thread.maxCustomerServiceTime = maxCustomerServiceTime *1000;
 		Thread.expressCheckoutNumberes = expressCheckoutNumberes;
-	
 		Thread.maxQueues = maxQueues;//maximum customers in the queue
-		
 		Thread.mixProductNumber = minProductNumber ;
 		Thread.maxProductNumber = maxProductNumber ;
 		Thread.minProductServiceTime = minProductServiceTime ;
@@ -43,7 +37,6 @@ public class Thread extends TimerTask{
 	//method from timerTask
 	@Override
 	public void run() {
-		
 		if(Simulation.isDone()==true) return;
 		
 		//creates a new customer at each customerTimeDifference interval
@@ -80,16 +73,8 @@ public class Thread extends TimerTask{
 		{
 			temp.displayRemainingTime();		
 		}
-		if(queues.get(0).get_y()!=30) 
-			{
-			queues.get(0).set_y(30); 
-			for (Customer temp : queues.get(0).getCustomers())
-			{
-				temp.set_y(queues.get(0).get_y());
-			}
-		
-			}
-		for(int i=1;i<queues.size();i++)
+		if(queues.size() <expressCheckoutNumberes) return;
+		for(int i=expressCheckoutNumberes+1;i<queues.size();i++)
 			if(queues.get(i).get_y()-queues.get(i-1).get_y() != 20) 
 				{
 				queues.get(i).set_y(queues.get(i-1).get_y()+20);
@@ -102,42 +87,29 @@ public class Thread extends TimerTask{
 		
 		Simulation.getSimulationFrame().repaint();
 	}
+	
 	//removes unused queues
 	private boolean removeUnusedQueues() {
-		//for(Queue temp : queues)
 		for(int i=expressCheckoutNumberes; i<queues.size();i++)
 		{
-		//	if(temp.getCustomers().size() == 0) 
 			if(queues.get(i).getCustomers().size() == 0)
-			{
-//				Simulation.getSimulationFrame().getContentPane().remove(temp.getCustomerTimeLabel());
-//				Simulation.getSimulationFrame().getContentPane().remove(temp.getQueueTimeLabel());
-//				Simulation.getSimulationFrame().getContentPane().remove(temp);
-//				queues.remove(temp);
-				
+			{				
 				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i).getCustomerTimeLabel());
 				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i).getQueueTimeLabel());
 				Simulation.getSimulationFrame().getContentPane().remove(queues.get(i));
 				queues.remove(queues.get(i));
 				Simulation.getSimulationFrame().repaint();
-				
 				return true;
 			}	
-			
 		}
 		
 		return false;
 	}
 	//removes served clients
 	private void removeServedClients() {
-		for(Queue temp : queues)
-		//for(int i =expressCheckouts;i<queues.size();i++)
-		{
-			if(temp.isCustomerServed()==true) 
-			{
+		for(Queue temp : queues){
+			if(temp.isCustomerServed()==true) {
 				temp.removeCustomerFromQueue();
-				Simulation.write("customer left from queue " + Integer.toString(temp.getQueueNumber()));
-				
 			}	
 		}		
 	}
@@ -150,6 +122,7 @@ public class Thread extends TimerTask{
 		double customerServiceTime = 0;
 		double serviceProductTime = 0;
 		double minServiceTime = Integer.MAX_VALUE;
+		double minExpressServiceTime = Integer.MAX_VALUE;
 		int iterator=0;
 		
 		Random generator = new Random();
@@ -167,17 +140,15 @@ public class Thread extends TimerTask{
 			for(int i =0; i <expressCheckoutNumberes; i++) {
 			queues.add(new Queue(150,30 + 20*i,queueNumber++));
 			Simulation.getSimulationFrame().add(queues.get(i));
-			System.out.println("add expressCheckout");
 			}
 		}
 		
 		if(queues.size()==expressCheckoutNumberes) {
-			queues.add(new Queue(150,30+20*expressCheckoutNumberes,queueNumber++));
+			queues.add(new Queue(150,50+20*expressCheckoutNumberes,queueNumber++));
 			Simulation.getSimulationFrame().add(queues.get(0));
 				}
 		
 		//find which queue's waiting time is least
-		
 		for(int i=expressCheckoutNumberes;i<queues.size();i++)
 		{
 			if(queues.get(i).timeToServe()<minServiceTime) {
@@ -188,7 +159,8 @@ public class Thread extends TimerTask{
 		
 		for (int i=0;i<expressCheckoutNumberes;i++)
 		{
-			if(queues.get(i).timeToServe()<minServiceTime) {
+			if(queues.get(i).timeToServe()<minExpressServiceTime) {
+				minExpressServiceTime = queues.get(i).timeToServe();
 				expressIterator=i;
 				}	
 		}
@@ -197,12 +169,7 @@ public class Thread extends TimerTask{
 			{	
 			queues.add(new Queue(150,queues.get(queues.size()-1).get_y()+20,queueNumber++));
 			iterator=queues.size()-1; // generate a new Queue 
-			System.out.println("add normal queue");
-			System.out.println("queues.size()"+queues.size());
-			
 			}
-		
-		System.out.println("queues.size()"+queues.size());
 	
 		Simulation.getSimulationFrame().add(queues.get(iterator));
 		System.out.println("productNumber==="+productNumber);
@@ -269,8 +236,5 @@ public class Thread extends TimerTask{
 	public ArrayList<Queue> getQueues() {
 		return queues;
 	}
-
-
-
 }
 

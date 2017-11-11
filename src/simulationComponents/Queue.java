@@ -97,31 +97,19 @@ public class Queue extends JPanel{
 		if(System.currentTimeMillis()%1000<=10) {getCustomerTimeLabel().setText(string);getQueueTimeLabel().setText(string2);}	
 	}
 		
-	/**
-	 * x axis setter
-	 * @param x x axis value
-	 */
+
 	public void set_x(int x) {
 		this.x = x;
 	}
-	/**
-	 * x axis getter
-	 * @return value of x
-	 */
+
 	public int get_x() {
 		return x;
 	}
-	/**
-	 * y axis setter
-	 * @param y y axis value
-	 */
+	
 	public void set_y(int y) {
 		this.y = y;
 	}
-	/**
-	 * y axis getter
-	 * @return value of y
-	 */
+
 	public int get_y() {
 		return y;
 	}

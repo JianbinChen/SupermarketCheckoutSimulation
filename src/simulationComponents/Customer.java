@@ -13,7 +13,7 @@ public class Customer extends JPanel{
 	private static double timeDifference;
 	private double serviceTime;
 	private int last = 10;
-	private int productNumber;
+	//private int productNumber;
 	
 	public void paint(Graphics g)
 	{
@@ -33,31 +33,19 @@ public class Customer extends JPanel{
 		this.setServiceTime(serviceTime);	
 	}	
 	
-	/**
-	 * x axis setter
-	 * @param x x axis value
-	 */
+
 	public void set_x(int x) {
 		this.x = x;
 	}
-	/**
-	 * x axis getter
-	 * @return value of x
-	 */
+
 	public int get_x() {
 		return x;
 	}
-	/**
-	 * y axis setter
-	 * @param y y axis value
-	 */
+
 	public void set_y(int y) {
 		this.y = y;
 	}
-	/**
-	 * y axis getter
-	 * @return value of y
-	 */
+	
 	public int get_y() {
 		return y;
 	}
