@@ -24,13 +24,8 @@ private ActionListener startListener = new ActionListener() {
 			int minProductServiceTime = 0;
 			int maxProductServiceTime = 0;
 			int expressCheckoutNumberes= 0;
-			
-			int minCustomerServiceTime = 0;
-			int maxCustomerServiceTime = 0;
 			int maxQueues = 0;
 			int simulationTime = 0;
-
-			
 			try{
 				minCustomerTimeDifference = Integer.parseInt(getMainFrame().getMinCustomerTimeDifference().getText());
 				maxCustomerTimeDifference = Integer.parseInt(getMainFrame().getMaxCustomerTimeDifference().getText());
@@ -45,11 +40,8 @@ private ActionListener startListener = new ActionListener() {
 			}
 			catch(Exception e){JOptionPane.showMessageDialog(new JFrame(),e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);return;}
 			
-			minCustomerServiceTime =  1;
-			maxCustomerServiceTime = 1200;
-			new Simulation( minCustomerTimeDifference, maxCustomerTimeDifference, minCustomerServiceTime, maxCustomerServiceTime, maxQueues, simulationTime,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime,expressCheckoutNumberes);
-			
-			
+			new Simulation( minCustomerTimeDifference, maxCustomerTimeDifference, maxQueues, simulationTime,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime,expressCheckoutNumberes);
+				
 		}
 	};
 

@@ -33,7 +33,6 @@ public class Customer extends JPanel{
 		this.setServiceTime(serviceTime);	
 	}	
 	
-
 	public void set_x(int x) {
 		this.x = x;
 	}

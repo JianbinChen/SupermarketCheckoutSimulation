@@ -154,7 +154,4 @@ public class Queue extends JPanel{
 	public int getQueueNumber() {
 		return queueNumber;
 	}
-
-	
-
 }

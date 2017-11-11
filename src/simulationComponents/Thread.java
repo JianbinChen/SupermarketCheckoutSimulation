@@ -7,8 +7,6 @@ import java.util.TimerTask;
 public class Thread extends TimerTask{
 	private static double minCustomerTimeDifference;
 	private static double maxCustomerTimeDifference;
-	private static double minCustomerServiceTime;
-	private static double maxCustomerServiceTime;
 	private static int mixProductNumber;
 	private static int maxProductNumber;
 	private static double minProductServiceTime;
@@ -17,15 +15,12 @@ public class Thread extends TimerTask{
 	private static int maxQueues;	
 	private ArrayList<Queue> queues = new ArrayList<Queue>();
 	private int queueNumber = 1;
-	private static int tee =0;
 	
-	public Thread ( double minCustomerTimeDifference, double maxCustomerTimeDifference, double minCustomerServiceTime, double maxCustomerServiceTime, int maxQueues,int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime,int expressCheckoutNumberes)
+	public Thread ( double minCustomerTimeDifference, double maxCustomerTimeDifference, int maxQueues,int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime,int expressCheckoutNumberes)
 	{
 		Thread.minCustomerTimeDifference = minCustomerTimeDifference * 1000;   //customer arriving time
 		Thread.maxCustomerTimeDifference = maxCustomerTimeDifference * 1000;
 		Customer.setTimeDifference(System.currentTimeMillis());
-		Thread.minCustomerServiceTime = minCustomerServiceTime *1000;        
-		Thread.maxCustomerServiceTime = maxCustomerServiceTime *1000;
 		Thread.expressCheckoutNumberes = expressCheckoutNumberes;
 		Thread.maxQueues = maxQueues;//maximum customers in the queue
 		Thread.mixProductNumber = minProductNumber ;
@@ -40,7 +35,7 @@ public class Thread extends TimerTask{
 		if(Simulation.isDone()==true) return;
 		
 		//creates a new customer at each customerTimeDifference interval
-		if(Simulation.isTimeForMoreClients(maxServeTime()) == false && Customer.getTimeDifference() <= System.currentTimeMillis())
+		if( Customer.getTimeDifference() <= System.currentTimeMillis())
 			{
 				newCustomer();
 			}
@@ -56,16 +51,6 @@ public class Thread extends TimerTask{
 			repaint()
 			;			
 	}
-	
-	private double maxServeTime() {
-		double time=0;
-		for(Queue temp:queues)
-		{
-			if(time < temp.timeToServe()) time = temp.timeToServe();	
-		}
-		if(time==0) time=maxCustomerServiceTime+maxCustomerTimeDifference;
-		return time;
-	}
 
 	private void repaint() {
 		if(queues.size() ==0) return;
@@ -75,16 +60,12 @@ public class Thread extends TimerTask{
 		}
 		if(queues.size() <expressCheckoutNumberes) return;
 		for(int i=expressCheckoutNumberes+1;i<queues.size();i++)
-			if(queues.get(i).get_y()-queues.get(i-1).get_y() != 20) 
-				{
+			if(queues.get(i).get_y()-queues.get(i-1).get_y() != 20) {
 				queues.get(i).set_y(queues.get(i-1).get_y()+20);
-				for (Customer temp : queues.get(i).getCustomers())
-				{
+				for (Customer temp : queues.get(i).getCustomers()){
 					temp.set_y(queues.get(i).get_y());
 				}
-				
-				}
-		
+			}
 		Simulation.getSimulationFrame().repaint();
 	}
 	
@@ -102,7 +83,6 @@ public class Thread extends TimerTask{
 				return true;
 			}	
 		}
-		
 		return false;
 	}
 	//removes served clients
@@ -186,27 +166,12 @@ public class Thread extends TimerTask{
 			Simulation.getSimulationFrame().setVisible(true);
 		}
 		
-		Simulation.write("total wait time for each customer"+ queues.size()*(minCustomerServiceTime+maxCustomerServiceTime));
+//		Simulation.write("total wait time for each customer"+ queues.size()*(minCustomerServiceTime+maxCustomerServiceTime));
 		Simulation.write("Total utilization for eah checkout"+ maxQueues*(minProductServiceTime+maxProductServiceTime));
 		Simulation.write("total products processed"+maxQueues*(mixProductNumber+maxProductNumber));
 		Simulation.write("Average customer wait time"+maxQueues*(mixProductNumber+maxProductNumber));
 	}
 	
-	public void setMinCustomerServiceTime(double minCustomerServiceTime) {
-		Thread.minCustomerServiceTime = minCustomerServiceTime;
-	}
-
-	public double getMinCustomerServiceTime() {
-		return minCustomerServiceTime;
-	}
-
-	public void setMaxCustomerServiceTime(double maxCustomerServiceTime) {
-		Thread.maxCustomerServiceTime = maxCustomerServiceTime;
-	}
-
-	public double getMaxCustomerServiceTime() {
-		return maxCustomerServiceTime;
-	}
 
 	public void setMaxQueues(int maxQueues) {
 		Thread.maxQueues = maxQueues;

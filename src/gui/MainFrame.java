@@ -10,8 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 // Extends the class JFrame and is used for user interface
-
-
 public class MainFrame  extends JFrame{
 	//interface fields
 	private JTextField minCustomerTimeDifference = new JTextField("0");
