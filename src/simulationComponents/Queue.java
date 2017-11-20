@@ -21,7 +21,7 @@ public class Queue extends JPanel{
 	public void paint(Graphics g)
 	{
 		super.paint(g);
-		this.setBackground(Simulation.getSimulationFrame().getContentPane().getBackground());
+		this.setBackground(SimulationController.getSimulationFrame().getContentPane().getBackground());
 		this.setBounds(get_x(), get_y(), 20, 20);
 		if(last == 0) g.setColor(Color.BLACK);
 		else {g.setColor(Color.RED);last--;}
@@ -36,10 +36,10 @@ public class Queue extends JPanel{
 		this.set_x(x);
 		this.set_y(y);
 		this.setQueueNumber(queueNumber);
-		Simulation.getSimulationFrame().add(getQueueTimeLabel());
-		Simulation.getSimulationFrame().setVisible(true);
-		Simulation.getSimulationFrame().add(getCustomerTimeLabel());
-		Simulation.getSimulationFrame().setVisible(true);
+		SimulationController.getSimulationFrame().add(getQueueTimeLabel());
+		SimulationController.getSimulationFrame().setVisible(true);
+		SimulationController.getSimulationFrame().add(getCustomerTimeLabel());
+		SimulationController.getSimulationFrame().setVisible(true);
 
 		
 	}
@@ -49,22 +49,22 @@ public class Queue extends JPanel{
 		if(this.getCustomers().size()==0) this.getCustomers().add(new Customer(this.x + 20, this.y, serviceTime));		
 		else this.getCustomers().add(new Customer(this.getCustomers().get(this.getCustomers().size()-1).get_x()+20, this.y, serviceTime));     
 		
-		Simulation.getSimulationFrame().add(this.getCustomers().get(this.getCustomers().size()-1));		
-		Simulation.getSimulationFrame().setVisible(true);
+		SimulationController.getSimulationFrame().add(this.getCustomers().get(this.getCustomers().size()-1));		
+		SimulationController.getSimulationFrame().setVisible(true);
 	}
 	
 	
 	
 	public void removeCustomerFromQueue()
 	{
-		Simulation.getSimulationFrame().getContentPane().remove(this.getCustomers().get(0));
+		SimulationController.getSimulationFrame().getContentPane().remove(this.getCustomers().get(0));
 		this.getCustomers().remove(0);	
 		for(Customer temp : customers)
 		{
 			temp.set_x(temp.get_x()-20);
 			servingStartTime = System.currentTimeMillis();
 		}
-		Simulation.getSimulationFrame().repaint();
+		SimulationController.getSimulationFrame().repaint();
 	}
 	
 	public boolean isCustomerServed()

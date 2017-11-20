@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import simulationComponents.Simulation;
+import simulationComponents.SimulationController;
 
 public class Controller {
 	
@@ -40,7 +40,7 @@ private ActionListener startListener = new ActionListener() {
 			}
 			catch(Exception e){JOptionPane.showMessageDialog(new JFrame(),e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);return;}
 			
-			new Simulation( minCustomerTimeDifference, maxCustomerTimeDifference, maxQueues, simulationTime,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime,expressCheckoutNumberes);
+			new SimulationController( minCustomerTimeDifference, maxCustomerTimeDifference, maxQueues, simulationTime,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime,expressCheckoutNumberes);
 				
 		}
 	};

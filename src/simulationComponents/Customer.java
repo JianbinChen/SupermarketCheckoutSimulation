@@ -18,7 +18,7 @@ public class Customer extends JPanel{
 	public void paint(Graphics g)
 	{
 		super.paint(g);
-		this.setBackground(Simulation.getSimulationFrame().getContentPane().getBackground());
+		this.setBackground(SimulationController.getSimulationFrame().getContentPane().getBackground());
 		
 		this.setBounds(get_x(), get_y(), 17, 17);
 		if(last == 0 ) g.setColor(Color.BLUE);

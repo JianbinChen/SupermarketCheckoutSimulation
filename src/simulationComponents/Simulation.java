@@ -1,73 +1,205 @@
 package simulationComponents;
 
-import gui.SimulationFrame;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.TimerTask;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Timer;
-
-public class Simulation {
-
-	private static long simulationTime;
-	private static SimulationFrame simulationFrame;
-	private static Timer timer;
+public class Simulation extends TimerTask{
+	private static double minCustomerTimeDifference;
+	private static double maxCustomerTimeDifference;
+	private static int mixProductNumber;
+	private static int maxProductNumber;
+	private static double minProductServiceTime;
+	private static double maxProductServiceTime;
+	private static int expressCheckoutNumberes;
+	private static int maxQueues;	
+	private ArrayList<Queue> queues = new ArrayList<Queue>();
+	private int queueNumber = 1;
 	
-	public Simulation( int minCustomerTimeDifference, int maxCustomerTimeDifference, int maxQueues, long simulationTime, int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime,int expressCheckoutNumberes)
+	public Simulation ( double minCustomerTimeDifference, double maxCustomerTimeDifference, int maxQueues,int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime,int expressCheckoutNumberes)
 	{
-		simulationFrame = new SimulationFrame();
-		this.simulationTime = simulationTime*1000+System.currentTimeMillis(); // the time that the pop-up window will be retained
-		try {
-		    BufferedWriter out = new BufferedWriter(new FileWriter("log.txt")); //buffer the output to file to make it efficiently 
-		    out.write("");	    
-		    out.close();
-		} catch (IOException e) {System.out.println(e.getMessage());
-		}
-		timer = new Timer();
-		timer.schedule(new Thread(minCustomerTimeDifference, maxCustomerTimeDifference, maxQueues,minProductNumber,maxProductNumber,minProductServiceTime,maxProductServiceTime,expressCheckoutNumberes), 1000,10);		
-	}
-	
-	public static boolean isTimeForMoreClients(double maxTime)
-	{
-		if(simulationTime - maxTime - 1000 < System.currentTimeMillis())     //really don't understand it  
-		{			
-			return true;
-		}
-		return false;		
-	}
-	
-	//true if the simulation is done
-	public static boolean isDone()
-	{		
+		Simulation.minCustomerTimeDifference = minCustomerTimeDifference * 1000;   //customer arriving time
+		Simulation.maxCustomerTimeDifference = maxCustomerTimeDifference * 1000;
+		Customer.setTimeDifference(System.currentTimeMillis());
+		Simulation.expressCheckoutNumberes = expressCheckoutNumberes;
+		Simulation.maxQueues = maxQueues;//maximum customers in the queue
+		Simulation.mixProductNumber = minProductNumber ;
+		Simulation.maxProductNumber = maxProductNumber ;
+		Simulation.minProductServiceTime = minProductServiceTime ;
+		Simulation.maxProductServiceTime = maxProductServiceTime ;
 		
-		if(simulationTime <= System.currentTimeMillis() || simulationFrame.isVisible() == false) 
+	}
+	//method from timerTask
+	@Override
+	public void run() {
+		if(SimulationController.isDone()==true) return;
+		
+		//creates a new customer at each customerTimeDifference interval
+		if( Customer.getTimeDifference() <= System.currentTimeMillis())
+			{
+				newCustomer();
+			}
+		
+		//removes served clients
+		removeServedClients();
+		
+		//removes unused queues
+		while (removeUnusedQueues()==true);
+	
+		//repaints the frame
+		if(System.currentTimeMillis()%1000<=10)
+			repaint()
+			;			
+	}
+
+	private void repaint() {
+		if(queues.size() ==0) return;
+		for(Queue temp:queues)
 		{
-			
-			getSimulationFrame().setVisible(false);
-			timer.cancel();
-			return true;
+			temp.displayRemainingTime();		
 		}
-		return false;	
+		if(queues.size() <expressCheckoutNumberes) return;
+		for(int i=expressCheckoutNumberes+1;i<queues.size();i++)
+			if(queues.get(i).get_y()-queues.get(i-1).get_y() != 20) {
+				queues.get(i).set_y(queues.get(i-1).get_y()+20);
+				for (Customer temp : queues.get(i).getCustomers()){
+					temp.set_y(queues.get(i).get_y());
+				}
+			}
+		SimulationController.getSimulationFrame().repaint();
 	}
 	
-	public static void write(String string)
+	//removes unused queues
+	private boolean removeUnusedQueues() {
+		for(int i=expressCheckoutNumberes; i<queues.size();i++)
+		{
+			if(queues.get(i).getCustomers().size() == 0)
+			{				
+				SimulationController.getSimulationFrame().getContentPane().remove(queues.get(i).getCustomerTimeLabel());
+				SimulationController.getSimulationFrame().getContentPane().remove(queues.get(i).getQueueTimeLabel());
+				SimulationController.getSimulationFrame().getContentPane().remove(queues.get(i));
+				queues.remove(queues.get(i));
+				SimulationController.getSimulationFrame().repaint();
+				return true;
+			}	
+		}
+		return false;
+	}
+	//removes served clients
+	private void removeServedClients() {
+		for(Queue temp : queues){
+			if(temp.isCustomerServed()==true) {
+				temp.removeCustomerFromQueue();
+			}	
+		}		
+	}
+	
+	private void newCustomer()
 	{
-		try {
-		    BufferedWriter out = new BufferedWriter(new FileWriter("log.txt",true));
-		    out.write(string);		   
-		    out.newLine();
-		    out.close();
-		} catch (IOException e) {System.out.println(e.getMessage());
-		}	
-	}
-
-	public static void setSimulationFrame(SimulationFrame simulationFrame) {
-		Simulation.simulationFrame = simulationFrame;
-	}
-
-	public static SimulationFrame getSimulationFrame() {
-		return simulationFrame;
+		double arrivalTime = 0;
+		int expressIterator =0;
+		int productNumber  = 0;
+		double customerServiceTime = 0;
+		double serviceProductTime = 0;
+		double minServiceTime = Integer.MAX_VALUE;
+		double minExpressServiceTime = Integer.MAX_VALUE;
+		int iterator=0;
+		
+		Random generator = new Random();
+		arrivalTime = generator.nextDouble()*(maxCustomerTimeDifference-minCustomerTimeDifference)+minCustomerTimeDifference;
+		productNumber = (int)(generator.nextDouble()*(maxProductNumber - mixProductNumber) + mixProductNumber);
+		
+		for(int i=0; i<productNumber ;i++) {
+			serviceProductTime = generator.nextDouble()*(maxProductServiceTime-minProductServiceTime)+minProductServiceTime;
+			customerServiceTime += serviceProductTime;
+		}
+		System.out.println("customerServiceTime" + customerServiceTime);
+		System.out.println("arrivalTime" + arrivalTime);
+			
+		if(queues.size()==0) {
+			for(int i =0; i <expressCheckoutNumberes; i++) {
+			queues.add(new Queue(150,30 + 20*i,queueNumber++));
+			SimulationController.getSimulationFrame().add(queues.get(i));
+			}
+		}
+		
+		if(queues.size()==expressCheckoutNumberes) {
+			queues.add(new Queue(150,50+20*expressCheckoutNumberes,queueNumber++));
+			SimulationController.getSimulationFrame().add(queues.get(0));
+				}
+		
+		//find which queue's waiting time is least
+		for(int i=expressCheckoutNumberes;i<queues.size();i++)
+		{
+			if(queues.get(i).timeToServe()<minServiceTime) {
+				minServiceTime = queues.get(i).timeToServe();
+				iterator=i;
+				}		
+		}
+		
+		for (int i=0;i<expressCheckoutNumberes;i++)
+		{
+			if(queues.get(i).timeToServe()<minExpressServiceTime) {
+				minExpressServiceTime = queues.get(i).timeToServe();
+				expressIterator=i;
+				}	
+		}
+		System.out.println("minServiceTime"+minServiceTime);
+		if(minServiceTime > 1000 && queues.size()<maxQueues) 
+			{	
+			queues.add(new Queue(150,queues.get(queues.size()-1).get_y()+20,queueNumber++));
+			iterator=queues.size()-1; // generate a new Queue 
+			}
+	
+		SimulationController.getSimulationFrame().add(queues.get(iterator));
+		System.out.println("productNumber==="+productNumber);
+		if(productNumber <= 600) {
+			queues.get(expressIterator).addCustomerToQueue(customerServiceTime);
+			if(queues.get(expressIterator).getCustomers().size() == 1) queues.get(expressIterator).setServingStartTime(System.currentTimeMillis());
+			Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
+			SimulationController.getSimulationFrame().setVisible(true);
+		}
+		else	{
+			queues.get(iterator).addCustomerToQueue(customerServiceTime);
+			if(queues.get(iterator).getCustomers().size() == 1) queues.get(iterator).setServingStartTime(System.currentTimeMillis());
+			Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
+			SimulationController.getSimulationFrame().setVisible(true);
+		}
+		
+//		Simulation.write("total wait time for each customer"+ queues.size()*(minCustomerServiceTime+maxCustomerServiceTime));
+		SimulationController.write("Total utilization for each checkout"+ maxQueues*(minProductServiceTime+maxProductServiceTime));
+		SimulationController.write("total products processed"+maxQueues*(mixProductNumber+maxProductNumber));
+		SimulationController.write("Average customer wait time"+maxQueues*(mixProductNumber+maxProductNumber));
 	}
 	
-	
+
+	public void setMaxQueues(int maxQueues) {
+		Simulation.maxQueues = maxQueues;
+	}
+
+	public int getMaxQueues() {
+		return maxQueues;
+	}
+
+	public void setMaxCustomerTimeDifference(double maxCustomerTimeDifference) {
+		Simulation.maxCustomerTimeDifference = maxCustomerTimeDifference;
+	}
+	public double getMaxCustomerTimeDifference() {
+		return maxCustomerTimeDifference;
+	}
+	public void setMinCustomerTimeDifference(double minCustomerTimeDifference) {
+		Simulation.minCustomerTimeDifference = minCustomerTimeDifference;
+	}
+	public double getMinCustomerTimeDifference() {
+		return minCustomerTimeDifference;
+	}
+
+	public void setQueues(ArrayList<Queue> queues) {
+		this.queues = queues;
+	}
+
+	public ArrayList<Queue> getQueues() {
+		return queues;
+	}
 }
+
