@@ -66,6 +66,8 @@ public class MainFrame  extends JFrame{
 	
 		this.add(new JLabel("simulation time:", JLabel.TRAILING));
 		this.add(getSimulationTime());	
+		this.add(new JLabel("", JLabel.TRAILING));
+		
 		this.add(getStart());
 		this.setVisible(true);	
 	}

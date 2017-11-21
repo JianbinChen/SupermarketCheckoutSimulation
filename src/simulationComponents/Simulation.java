@@ -1,5 +1,7 @@
 package simulationComponents;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.TimerTask;
@@ -15,6 +17,9 @@ public class Simulation extends TimerTask{
 	private static int maxQueues;	
 	private ArrayList<Queue> queues = new ArrayList<Queue>();
 	private int queueNumber = 1;
+	private static int checkoutUtiliztion;
+	private static int totalProductProcessed;
+	private static int quitCustomerNumber;
 	
 	public Simulation ( double minCustomerTimeDifference, double maxCustomerTimeDifference, int maxQueues,int minProductNumber,int maxProductNumber,int minProductServiceTime,int maxProductServiceTime,int expressCheckoutNumberes)
 	{
@@ -108,7 +113,8 @@ public class Simulation extends TimerTask{
 		Random generator = new Random();
 		arrivalTime = generator.nextDouble()*(maxCustomerTimeDifference-minCustomerTimeDifference)+minCustomerTimeDifference;
 		productNumber = (int)(generator.nextDouble()*(maxProductNumber - mixProductNumber) + mixProductNumber);
-		
+		totalProductProcessed += productNumber;
+				
 		for(int i=0; i<productNumber ;i++) {
 			serviceProductTime = generator.nextDouble()*(maxProductServiceTime-minProductServiceTime)+minProductServiceTime;
 			customerServiceTime += serviceProductTime;
@@ -154,22 +160,42 @@ public class Simulation extends TimerTask{
 		SimulationController.getSimulationFrame().add(queues.get(iterator));
 		System.out.println("productNumber==="+productNumber);
 		if(productNumber <= 600) {
+			checkoutUtiliztion++;
 			queues.get(expressIterator).addCustomerToQueue(customerServiceTime);
 			if(queues.get(expressIterator).getCustomers().size() == 1) queues.get(expressIterator).setServingStartTime(System.currentTimeMillis());
 			Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
 			SimulationController.getSimulationFrame().setVisible(true);
+			
 		}
 		else	{
-			queues.get(iterator).addCustomerToQueue(customerServiceTime);
-			if(queues.get(iterator).getCustomers().size() == 1) queues.get(iterator).setServingStartTime(System.currentTimeMillis());
-			Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
-			SimulationController.getSimulationFrame().setVisible(true);
+			checkoutUtiliztion++;
+			if(queues.get(iterator).getCustomerNumber() > 6)
+			{
+				quitCustomerNumber++;
+			}
+			else {
+				queues.get(iterator).addCustomerToQueue(customerServiceTime);
+				if(queues.get(iterator).getCustomers().size() == 1) queues.get(iterator).setServingStartTime(System.currentTimeMillis());
+				Customer.setTimeDifference(arrivalTime + System.currentTimeMillis());	
+				SimulationController.getSimulationFrame().setVisible(true);
+			}
 		}
-		
-//		Simulation.write("total wait time for each customer"+ queues.size()*(minCustomerServiceTime+maxCustomerServiceTime));
-		SimulationController.write("Total utilization for each checkout"+ maxQueues*(minProductServiceTime+maxProductServiceTime));
-		SimulationController.write("total products processed"+maxQueues*(mixProductNumber+maxProductNumber));
-		SimulationController.write("Average customer wait time"+maxQueues*(mixProductNumber+maxProductNumber));
+		int totalTime = 0;
+		int totalCustomerNumber = 0;
+		for(Queue temp:queues) {
+			totalTime += temp.getWaittingTime();
+			totalCustomerNumber += temp.getCustomerNumber();
+		}
+		String timeStamp = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date());
+		SimulationController.write("" + '\n');
+		SimulationController.write("System time :" + timeStamp);
+		SimulationController.write("total wait time for each customer :"+ queues.get(iterator).getWaittingTime());
+		SimulationController.write("Total utilisation for each checkout :"+ checkoutUtiliztion);
+		SimulationController.write("total products processed :" + totalProductProcessed);
+		SimulationController.write("average customer wait time :"+ totalTime/totalCustomerNumber);
+		SimulationController.write("average checkout utilisation :" + (float)checkoutUtiliztion/queues.size());
+		SimulationController.write("average products per trolley :" + totalProductProcessed/checkoutUtiliztion);
+		SimulationController.write("The number of lost customers :" + quitCustomerNumber);
 	}
 	
 

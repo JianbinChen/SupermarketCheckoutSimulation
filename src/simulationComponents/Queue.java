@@ -97,7 +97,18 @@ public class Queue extends JPanel{
 		if(System.currentTimeMillis()%1000<=10) {getCustomerTimeLabel().setText(string);getQueueTimeLabel().setText(string2);}	
 	}
 		
-
+	public int getWaittingTime() {
+		int waitingTime = 0;
+		for(Customer temp: customers) {
+			waitingTime += temp.getServiceTime();
+		}
+		return waitingTime;
+	}
+	
+	public int getCustomerNumber() {
+		return customers.size();
+	}
+	
 	public void set_x(int x) {
 		this.x = x;
 	}
